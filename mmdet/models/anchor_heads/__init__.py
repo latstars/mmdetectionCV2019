@@ -7,6 +7,7 @@ from .ga_rpn_head import GARPNHead
 from .guided_anchor_head import FeatureAdaption, GuidedAnchorHead
 from .reppoints_head import RepPointsHead
 from .retina_head import RetinaHead
+from .retina_sepbn_head import RetinaSepBNHead
 from .rpn_head import RPNHead
 from .ssd_head import SSDHead
 # @latstars
@@ -17,5 +18,5 @@ __all__ = [
     'GARPNHead', 'RetinaHead', 'GARetinaHead', 'SSDHead', 'FCOSHead',
     'RepPointsHead', 'FoveaHead', 'FreeAnchorRetinaHead'
     # @latstars
-    ,'FreeAnchorRetinaCosineHead'
+    ,'FreeAnchorRetinaCosineHead', 'RetinaSepBNHead'
 ]
