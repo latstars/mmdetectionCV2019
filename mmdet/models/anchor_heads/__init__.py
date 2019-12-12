@@ -9,9 +9,13 @@ from .reppoints_head import RepPointsHead
 from .retina_head import RetinaHead
 from .rpn_head import RPNHead
 from .ssd_head import SSDHead
+# @latstars
+from .free_anchor_retina_cosine_head import FreeAnchorRetinaCosineHead
 
 __all__ = [
     'AnchorHead', 'GuidedAnchorHead', 'FeatureAdaption', 'RPNHead',
     'GARPNHead', 'RetinaHead', 'GARetinaHead', 'SSDHead', 'FCOSHead',
     'RepPointsHead', 'FoveaHead', 'FreeAnchorRetinaHead'
+    # @latstars
+    ,'FreeAnchorRetinaCosineHead'
 ]
