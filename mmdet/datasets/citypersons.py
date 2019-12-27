@@ -1,12 +1,13 @@
 import numpy as np
 from pycocotools.coco import COCO
 
-from .custom import CustomDataset
+# from .custom import CustomDataset
+from .coco import CocoDataset
 from .registry import DATASETS
 
 
 @DATASETS.register_module
-class CitypersonsDataset(CustomDataset):
+class CitypersonsDataset(CocoDataset):
 
     CLASSES = ('ignored region', 'pedestrian', 
                'rider', 'group of people', 'sitting person', 'other')
@@ -105,7 +106,7 @@ class CitypersonsDataset(CustomDataset):
         ann = dict(
             bboxes=gt_bboxes,
             labels=gt_labels,
-            # bboxes_ignore=gt_bboxes_ignore,
+            bboxes_ignore=gt_bboxes_ignore,
             masks=gt_masks_ann,
             seg_map=seg_map)
 
