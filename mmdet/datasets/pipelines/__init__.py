@@ -6,6 +6,9 @@ from .test_aug import MultiScaleFlipAug
 from .transforms import (Albu, Expand, MinIoURandomCrop, Normalize, Pad,
                          PhotoMetricDistortion, RandomCrop, RandomFlip, Resize,
                          SegResizeFlipPadRescale)
+# @latstars
+from .loading_bi import LoadBiAnnotations
+from .formating_bi import CollectBi, DefaultFormatBundleBi
 
 __all__ = [
     'Compose', 'to_tensor', 'ToTensor', 'ImageToTensor', 'ToDataContainer',
@@ -13,4 +16,6 @@ __all__ = [
     'LoadProposals', 'MultiScaleFlipAug', 'Resize', 'RandomFlip', 'Pad',
     'RandomCrop', 'Normalize', 'SegResizeFlipPadRescale', 'MinIoURandomCrop',
     'Expand', 'PhotoMetricDistortion', 'Albu'
+    # @latstars
+    ,'LoadBiAnnotations', 'DefaultFormatBundleBi'
 ]
