@@ -36,7 +36,7 @@ model = dict(
             loss_weight=1.0),
         loss_bbox=dict(type='SmoothL1Loss', beta=0.11, loss_weight=1.0)),
      bbox_visible_head=dict(
-        type='RetinaBiHeadVisible',
+        type='RetinaBiVisibleHead',
         num_classes=2,
         in_channels=256,
         stacked_convs=4,
@@ -70,6 +70,7 @@ train_cfg = dict(
         pos_cover_thr=0.5,
         min_pos_iou=0,
         ignore_iof_thr=-1),
+    a_target=-3.0,
     allowed_border=-1,
     pos_weight=-1,
     debug=False)
@@ -80,19 +81,19 @@ test_cfg = dict(
     nms=dict(type='nms', iou_thr=0.5),
     max_per_img=100)
 # dataset settings
-dataset_type = 'CitypersonsDataset'
+dataset_type = 'CitypersonsBiDataset'
 data_root = 'data/citypersons_images/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations', with_bbox=True),
+    dict(type='LoadBiAnnotations', with_bbox=True),
     dict(type='Resize', img_scale=(2048, 1024), keep_ratio=True),
     dict(type='RandomFlip', flip_ratio=0.5),
     dict(type='Normalize', **img_norm_cfg),
     dict(type='Pad', size_divisor=32),
-    dict(type='DefaultFormatBundle'),
-    dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels']),
+    dict(type='DefaultFormatBundleBi'),
+    dict(type='CollectBi', keys=['img', 'gt_bboxes', 'gt_bboxes_visible', 'gt_labels']),
 ]
 test_pipeline = [
     dict(type='LoadImageFromFile'),
@@ -114,7 +115,7 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/train_full.json',
+        ann_file=data_root + 'annotations/train_bi.json',
         img_prefix=data_root + 'train/',
         pipeline=train_pipeline),
     val=dict(
@@ -150,7 +151,7 @@ log_config = dict(
 total_epochs = 30
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = './work_dirs/citypersons_retinanet_r50_fpn_1x'
+work_dir = './work_dirs/citypersons_retinanet_r50_fpn_1x_bi'
 load_from = None
 resume_from = None
 workflow = [('train', 1)]

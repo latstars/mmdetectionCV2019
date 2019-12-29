@@ -178,7 +178,7 @@ class MaxIoUBiAssigner(BaseAssigner):
 
 
         # 3. assign positive: above positive IoU threshold
-        pos_inds = ( max_overlaps >= self.pos_iou_thr  ) & 
+        pos_inds = ( max_overlaps >= self.pos_iou_thr  ) & \
           ( covers.gather(0, argmax_overlaps.reshape((1,-1))) >= self.pos_cover_thr)
         # pos_inds = max_overlaps >= self.pos_iou_thr 
         assigned_gt_inds[pos_inds] = argmax_overlaps[pos_inds] + 1
