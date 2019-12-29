@@ -11,6 +11,9 @@ from .transforms import (bbox2delta, bbox2result, bbox2roi, bbox_flip,
 from .assign_sampling import (  # isort:skip, avoid recursive imports
     assign_and_sample, build_assigner, build_sampler)
 
+# @latstars
+from .assigners import MaxIoUBiAssigner
+
 __all__ = [
     'bbox_overlaps', 'BaseAssigner', 'MaxIoUAssigner', 'AssignResult',
     'BaseSampler', 'PseudoSampler', 'RandomSampler',
@@ -19,4 +22,6 @@ __all__ = [
     'bbox2delta', 'delta2bbox', 'bbox_flip', 'bbox_mapping',
     'bbox_mapping_back', 'bbox2roi', 'roi2bbox', 'bbox2result',
     'distance2bbox', 'bbox_target'
+    # @latstars
+    , 'MaxIoUBiAssigner'
 ]

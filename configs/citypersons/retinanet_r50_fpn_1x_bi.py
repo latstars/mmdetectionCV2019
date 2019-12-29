@@ -56,16 +56,18 @@ model = dict(
         loss_bbox=dict(type='SmoothL1Loss', beta=0.11, loss_weight=1.0)))
 # training and testing settings
 train_cfg = dict(
-    assigner=dict(
-        type='MaxIoUAssigner',
+    assigner_bi=dict(
+        type='MaxIoUBiAssigner',
         pos_iou_thr=0.5,
-        neg_iou_thr=0.4,
+        neg_iou_thr=0.5,
+        pos_cover_thr=0.5,
         min_pos_iou=0,
         ignore_iof_thr=-1),
-    assigner_visible=dict(
-        type='MaxIoUAssigner',
+    assigner_bi_visible=dict(
+        type='MaxIoUBiAssigner',
         pos_iou_thr=0.5,
-        neg_iou_thr=0.4,
+        neg_iou_thr=0.5,
+        pos_cover_thr=0.5,
         min_pos_iou=0,
         ignore_iof_thr=-1),
     allowed_border=-1,
