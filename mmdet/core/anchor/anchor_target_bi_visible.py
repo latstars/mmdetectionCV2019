@@ -124,7 +124,7 @@ def anchor_target_bi_visible_single(flat_anchors,
                                              gt_bboxes_ignore, gt_labels)
         bbox_sampler = PseudoSampler()
         sampling_result = bbox_sampler.sample(assign_result, anchors,
-                                              gt_bboxes)
+                                              gt_bboxes_visible)
 
     num_valid_anchors = anchors.shape[0]
     bbox_targets = torch.zeros_like(anchors)
