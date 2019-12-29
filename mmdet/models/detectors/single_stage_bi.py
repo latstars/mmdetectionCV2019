@@ -22,7 +22,7 @@ class SingleStageBiDetector(BaseDetector):
                  train_cfg=None,
                  test_cfg=None,
                  pretrained=None):
-        super(SingleStageDetector, self).__init__()
+        super(SingleStageBiDetector, self).__init__()
         self.backbone = builder.build_backbone(backbone)
         if neck is not None:
             self.neck = builder.build_neck(neck)
@@ -33,7 +33,7 @@ class SingleStageBiDetector(BaseDetector):
         self.init_weights(pretrained=pretrained)
 
     def init_weights(self, pretrained=None):
-        super(SingleStageDetector, self).init_weights(pretrained)
+        super(SingleStageBiDetector, self).init_weights(pretrained)
         self.backbone.init_weights(pretrained=pretrained)
         if self.with_neck:
             if isinstance(self.neck, nn.Sequential):
