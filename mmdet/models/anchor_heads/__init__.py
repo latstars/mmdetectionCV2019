@@ -13,11 +13,16 @@ from .ssd_head import SSDHead
 # @latstars
 from .free_anchor_retina_cosine_head import FreeAnchorRetinaCosineHead
 from .free_anchor_retina_sepbn_head import FreeAnchorRetinaSepBNHead
+from .anchor_bi_head import AnchorBiHead
+from .anchor_bi_visible_head import AnchorBiVisibleHead
+from .retina_bi_head import RetinaBiHead
+from .retina_bi_visible_head import RetinaBiVisibleHead
 
 __all__ = [
     'AnchorHead', 'GuidedAnchorHead', 'FeatureAdaption', 'RPNHead',
     'GARPNHead', 'RetinaHead', 'GARetinaHead', 'SSDHead', 'FCOSHead',
     'RepPointsHead', 'FoveaHead', 'FreeAnchorRetinaHead'
     # @latstars
-    ,'FreeAnchorRetinaCosineHead', 'RetinaSepBNHead', 'FreeAnchorRetinaSepBNHead'
+    ,'FreeAnchorRetinaCosineHead', 'RetinaSepBNHead', 'FreeAnchorRetinaSepBNHead',
+    'AnchorBiHead', 'AnchorBiVisibleHead', 'RetinaBiHead', 'RetinaBiVisibleHead'
 ]
