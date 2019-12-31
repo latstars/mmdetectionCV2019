@@ -59,14 +59,14 @@ train_cfg = dict(
     assigner_bi=dict(
         type='MaxIoUBiAssigner',
         pos_iou_thr=0.5,
-        neg_iou_thr=0.4,
+        neg_iou_thr=0.5,
         pos_cover_thr=0.5,
         min_pos_iou=0,
         ignore_iof_thr=-1),
     assigner_bi_visible=dict(
         type='MaxIoUBiAssigner',
         pos_iou_thr=0.5,
-        neg_iou_thr=0.4,
+        neg_iou_thr=0.5,
         pos_cover_thr=0.5,
         min_pos_iou=0,
         ignore_iof_thr=-1),
@@ -137,7 +137,7 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=500,
     warmup_ratio=1.0 / 3,
-    step=[15])
+    step=[45])
 checkpoint_config = dict(interval=1)
 # yapf:disable
 log_config = dict(
@@ -148,10 +148,10 @@ log_config = dict(
     ])
 # yapf:enable
 # runtime settings
-total_epochs = 30
+total_epochs = 60
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = './work_dirs/citypersons_retinanet_r50_fpn_1x_bi_iou04'
+work_dir = './work_dirs/citypersons_retinanet_r50_fpn_2x_bi'
 load_from = None
 resume_from = None
 workflow = [('train', 1)]

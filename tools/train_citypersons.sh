@@ -53,9 +53,26 @@ EVAL_METRICS="bbox"
 # CHECKPOINT_FILE=work_dirs/citypersons_retinanet_free_anchor_r50_fpn_1x_debug/latest.pth
 # CUDA_VISIBLE_DEVICES=0 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out result/citypersons_retinanet_free_anchor_r50_fpn_1x_debug_epoch30.pkl --eval ${EVAL_METRICS}
 
-GPU_NUM=1
-CONFIG_FILE=configs/citypersons/retinanet_r50_fpn_1x_bi.py
-CUDA_VISIBLE_DEVICES=0 tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 7880 # --validate 
-CHECKPOINT_FILE=work_dirs/citypersons_retinanet_r50_fpn_1x_bi/latest.pth
-CUDA_VISIBLE_DEVICES=0 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out result/citypersons_retinanet_r50_fpn_1x_bi_epoch30.pkl --eval ${EVAL_METRICS}
+# GPU_NUM=1
+# CONFIG_FILE=configs/citypersons/retinanet_r50_fpn_1x_bi.py
+# CUDA_VISIBLE_DEVICES=0 tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 7880 # --validate 
+# CHECKPOINT_FILE=work_dirs/citypersons_retinanet_r50_fpn_1x_bi/latest.pth
+# CUDA_VISIBLE_DEVICES=0 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out result/citypersons_retinanet_r50_fpn_1x_bi_epoch30.pkl --eval ${EVAL_METRICS}
 
+# GPU_NUM=1
+# CONFIG_FILE=configs/citypersons/retinanet_r50_fpn_1x_bi.py
+# CUDA_VISIBLE_DEVICES=0 tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 7880 --validate 
+# CHECKPOINT_FILE=work_dirs/citypersons_retinanet_r50_fpn_1x_bi_iou04/latest.pth
+# CUDA_VISIBLE_DEVICES=0 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out result/citypersons_retinanet_r50_fpn_1x_bi_iou04_epoch30.pkl --eval ${EVAL_METRICS}
+
+# GPU_NUM=1
+# CONFIG_FILE=configs/citypersons/retinanet_r50_fpn_2x_bi.py
+# CUDA_VISIBLE_DEVICES=1 tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 7881 --validate 
+# CHECKPOINT_FILE=work_dirs/citypersons_retinanet_r50_fpn_2x_bi/latest.pth
+# CUDA_VISIBLE_DEVICES=1 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out result/citypersons_retinanet_r50_fpn_2x_bi_epoch30.pkl --eval ${EVAL_METRICS}
+
+GPU_NUM=1
+CONFIG_FILE=configs/citypersons/retinanet_r50_fpn_2x_bi_iou04.py
+CUDA_VISIBLE_DEVICES=3 tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 7882 --validate 
+CHECKPOINT_FILE=work_dirs/citypersons_retinanet_r50_fpn_2x_bi_iou04/latest.pth
+CUDA_VISIBLE_DEVICES=3 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out result/citypersons_retinanet_r50_fpn_2x_bi_iou04_epoch30.pkl --eval ${EVAL_METRICS}

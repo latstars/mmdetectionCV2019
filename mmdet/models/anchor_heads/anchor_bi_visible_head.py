@@ -205,7 +205,7 @@ class AnchorBiVisibleHead(nn.Module):
             bbox_weights_list,
             num_total_samples=num_total_samples,
             cfg=cfg)
-        return dict(loss_cls=losses_cls, loss_bbox=losses_bbox)
+        return dict(loss_cls_visible=losses_cls, loss_bbox_visible=losses_bbox)
 
     @force_fp32(apply_to=('cls_scores', 'bbox_preds'))
     def get_bboxes(self,

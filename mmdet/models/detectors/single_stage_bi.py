@@ -78,24 +78,24 @@ class SingleStageBiDetector(BaseDetector):
             *loss_inputs, gt_bboxes_ignore=gt_bboxes_ignore)
         losses_visible = self.bbox_visible_head.loss(
             *loss_inputs, gt_bboxes_ignore=gt_bboxes_ignore)
-        return losses + losses_visible
+        return dict(**losses, **losses_visible)
 
     def simple_test(self, img, img_meta, rescale=False):
         x = self.extract_feat(img)
         outs = self.bbox_head(x)
-        outs_visible = self.bbox_visible_head(x)
+        # outs_visible = self.bbox_visible_head(x)
         bbox_inputs = outs + (img_meta, self.test_cfg, rescale)
-        bbox_inputs_visible = outs_visible + (img_meta, self.test_cfg, rescale)
+        # bbox_inputs_visible = outs_visible + (img_meta, self.test_cfg, rescale)
         bbox_list = self.bbox_head.get_bboxes(*bbox_inputs)
-        bbox_list_visible = self.bbox_visible_head.get_bboxes(*bbox_inputs_visible)
+        # bbox_list_visible = self.bbox_visible_head.get_bboxes(*bbox_inputs_visible)
         bbox_results = [
             bbox2result(det_bboxes, det_labels, self.bbox_head.num_classes)
             for det_bboxes, det_labels in bbox_list
         ]
-        bbox_results_visible = [
-            bbox2result(det_bboxes, det_labels, self.bbox_visible_head.num_classes)
-            for det_bboxes, det_labels in bbox_list_visible
-        ]
+        # bbox_results_visible = [
+        #     bbox2result(det_bboxes, det_labels, self.bbox_visible_head.num_classes)
+        #     for det_bboxes, det_labels in bbox_list_visible
+        # ]
         # return bbox_results_visible[0]
         return bbox_results[0]
 

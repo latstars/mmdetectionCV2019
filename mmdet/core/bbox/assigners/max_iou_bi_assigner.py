@@ -108,7 +108,7 @@ class MaxIoUBiAssigner(BaseAssigner):
                 ignore_max_overlaps, _ = ignore_overlaps.max(dim=0)
             overlaps[:, ignore_max_overlaps > self.ignore_iof_thr] = -1
 
-        assign_result = self.assign_wrt_overlaps_covers(overlaps, gt_labels)
+        assign_result = self.assign_wrt_overlaps_covers(overlaps, covers_visible, gt_labels)
         if assign_on_cpu:
             assign_result.gt_inds = assign_result.gt_inds.to(device)
             assign_result.max_overlaps = assign_result.max_overlaps.to(device)
@@ -178,8 +178,10 @@ class MaxIoUBiAssigner(BaseAssigner):
 
 
         # 3. assign positive: above positive IoU threshold
+        # pos_inds = ( max_overlaps >= self.pos_iou_thr  )
+        # covers_select = covers.gather(0, argmax_overlaps.reshape((1,-1)))
         pos_inds = ( max_overlaps >= self.pos_iou_thr  ) & \
-          ( covers.gather(0, argmax_overlaps.reshape((1,-1))) >= self.pos_cover_thr)
+          ( covers.gather(0, argmax_overlaps.reshape((1,-1))) >= self.pos_cover_thr).reshape(-1)
         # pos_inds = max_overlaps >= self.pos_iou_thr 
         assigned_gt_inds[pos_inds] = argmax_overlaps[pos_inds] + 1
 
