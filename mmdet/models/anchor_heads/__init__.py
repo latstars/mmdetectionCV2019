@@ -17,6 +17,10 @@ from .anchor_bi_head import AnchorBiHead
 from .anchor_bi_visible_head import AnchorBiVisibleHead
 from .retina_bi_head import RetinaBiHead
 from .retina_bi_visible_head import RetinaBiVisibleHead
+from .free_anchor_retina_bi_head import FreeAnchorRetinaBiHead
+from .free_anchor_retina_bi_visible_head import FreeAnchorRetinaBiVisibleHead
+from .free_anchor_retina_bi_visible_2_head import FreeAnchorRetinaBiVisible2Head
+
 
 __all__ = [
     'AnchorHead', 'GuidedAnchorHead', 'FeatureAdaption', 'RPNHead',
@@ -24,5 +28,6 @@ __all__ = [
     'RepPointsHead', 'FoveaHead', 'FreeAnchorRetinaHead'
     # @latstars
     ,'FreeAnchorRetinaCosineHead', 'RetinaSepBNHead', 'FreeAnchorRetinaSepBNHead',
-    'AnchorBiHead', 'AnchorBiVisibleHead', 'RetinaBiHead', 'RetinaBiVisibleHead'
+    'AnchorBiHead', 'AnchorBiVisibleHead', 'RetinaBiHead', 'RetinaBiVisibleHead',
+    'FreeAnchorRetinaBiHead', 'FreeAnchorRetinaBiVisibleHead', 'FreeAnchorRetinaBiVisible2Head'
 ]

@@ -108,7 +108,8 @@ class MaxIoUBiAssigner(BaseAssigner):
                 ignore_max_overlaps, _ = ignore_overlaps.max(dim=0)
             overlaps[:, ignore_max_overlaps > self.ignore_iof_thr] = -1
 
-        assign_result = self.assign_wrt_overlaps_covers(overlaps, covers_visible, gt_labels)
+        # assign_result = self.assign_wrt_overlaps_covers(overlaps, covers_visible, gt_labels)
+        assign_result = self.assign_wrt_overlaps(overlaps, gt_labels)
         if assign_on_cpu:
             assign_result.gt_inds = assign_result.gt_inds.to(device)
             assign_result.max_overlaps = assign_result.max_overlaps.to(device)
