@@ -6,9 +6,39 @@
 邮件：{1901213354, 1901111298, 1901111342}@pku.edu.cn
 该代码库基于MMDetection实现，在行人检测数据集CityPersons上实现了FreeAnchor方法和Bi-Box Regression方法。
 
+## Benchmark and model zoo
+所实现的检测器算法。
+
+|                    | ResNet   | CONFIG_FILE |
+|--------------------|:--------:|:-----------:|
+| Faster R-CNN       | ✓        |(configs/citypersons/faster_rcnn_r50_fpn_1x.py)|
+| Cascade R-CNN      | ✓        |(configs/citypersons/cascade_rcnn_r50_fpn_1x.py)|
+| RetinaNet          | ✓        |(configs/citypersons/retinanet_r50_fpn_1x.py)|
+| FreeAnchor         | ✓        |(configs/citypersons/retinanet_free_anchor_r50_fpn_1x.py)|
+| Bi-Box Regression  | ✓        |(configs/citypersons/retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04.py)|
+
+
 ## Introduction
 该库在PyTorch 1.1以上运行，安装请参考[INSTALL.md](docs/INSTALL.md)，运行请参考[GETTING_STARTED.md](docs/GETTING_STARTED.md)
-这里我们提供了运行脚本[tools/train_citypersons.py](tools/train_citypersons.py)
+这里我们提供了运行脚本[tools/train_citypersons.py](tools/train_citypersons.py)。
+
+## Installation
+
+Please refer to [INSTALL.md](docs/INSTALL.md) for installation and dataset preparation.
+
+
+## Get Started
+
+Please see [GETTING_STARTED.md](docs/GETTING_STARTED.md) for the basic usage of MMDetection.
+
+
+## Data Preparation
+
+将[https://www.cityscapes-dataset.com/](https://www.cityscapes-dataset.com/)上下载的数据放置在data/citypersons_iamges/目录下。
+分别放置到train/, val/, test/子目录下，可以参照data/citypersons_iamges/citypersons_script/下面的脚本进行处理。
+
+## 模型运行
+
 ```bash
 python tools/train_citypersons.py
 
@@ -34,26 +64,5 @@ python tools/train_citypersons.py
 ## License
 
 项目协议[Apache 2.0 license](LICENSE).
-
-## Benchmark and model zoo
-所实现的检测器算法。
-
-|                    | ResNet   | CONFIG_FILE |
-|--------------------|:--------:|:-----------:|
-| Faster R-CNN       | ✓        |(configs/citypersons/faster_rcnn_r50_fpn_1x.py)|
-| Cascade R-CNN      | ✓        |(configs/citypersons/cascade_rcnn_r50_fpn_1x.py)|
-| RetinaNet          | ✓        |(configs/citypersons/retinanet_r50_fpn_1x.py)|
-| FreeAnchor         | ✓        |(configs/citypersons/retinanet_free_anchor_r50_fpn_1x.py)|
-| Bi-Box Regression  | ✓        |(configs/citypersons/retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04.py)|
-
-
-## Installation
-
-Please refer to [INSTALL.md](docs/INSTALL.md) for installation and dataset preparation.
-
-
-## Get Started
-
-Please see [GETTING_STARTED.md](docs/GETTING_STARTED.md) for the basic usage of MMDetection.
 
 
