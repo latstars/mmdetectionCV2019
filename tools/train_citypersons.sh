@@ -1,13 +1,13 @@
 set -x 
-CONFIG_FILE=configs/free_anchor_citypersons/retinanet_free_anchor_r50_fpn_1x.py
-CONFIG_FILE=configs/citypersons/faster_rcnn_r50_fpn_1x.py
-CONFIG_FILE=configs/citypersons/faster_rcnn_r50_fpn_1x_large.py
-CONFIG_FILE=configs/citypersons/retinanet_r50_fpn_1x.py
-CONFIG_FILE=configs/citypersons/retinanet_free_anchor_r50_fpn_1x.py
-CONFIG_FILE=faster_rcnn_r50_fpn_1x_large.py
-CONFIG_FILE=faster_rcnn_r50_fpn_1x.py
+# CONFIG_FILE=configs/free_anchor_citypersons/retinanet_free_anchor_r50_fpn_1x.py
+# CONFIG_FILE=configs/citypersons/faster_rcnn_r50_fpn_1x.py
+# CONFIG_FILE=configs/citypersons/faster_rcnn_r50_fpn_1x_large.py
+# CONFIG_FILE=configs/citypersons/retinanet_r50_fpn_1x.py
+# CONFIG_FILE=configs/citypersons/retinanet_free_anchor_r50_fpn_1x.py
+# CONFIG_FILE=faster_rcnn_r50_fpn_1x_large.py
+# CONFIG_FILE=faster_rcnn_r50_fpn_1x.py
 # CUDA_VISIBLE_DEVICES=4 python tools/train.py ${CONFIG_FILE} --validate
-GPU_NUM=1
+# GPU_NUM=1
 EVAL_METRICS="bbox"
 
 # CONFIG_FILE=configs/citypersons/retinanet_r50_fpn_1x.py
@@ -107,15 +107,14 @@ EVAL_METRICS="bbox"
 # CHECKPOINT_FILE=work_dirs/citypersons_free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04/latest.pth
 # CUDA_VISIBLE_DEVICES=2 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out result/citypersons_free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_epoch30.pkl --eval ${EVAL_METRICS}
 
-GPU_NUM=1
-CONFIG_FILE=configs/citypersons/free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_lw04.py
-# CUDA_VISIBLE_DEVICES=2 tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 7884 --validate 
-# CHECKPOINT_FILE=work_dirs/citypersons_free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_lw04/latest.pth
-CHECKPOINT_FILE=work_dirs/citypersons_free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_lw04/epoch_19.pth
-CUDA_VISIBLE_DEVICES=2 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out result/citypersons_free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_lw04_epoch19.pkl --eval ${EVAL_METRICS}
-
 # GPU_NUM=1
 # CONFIG_FILE=configs/citypersons/free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_lw04_2.py
 # CUDA_VISIBLE_DEVICES=5 tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 7885 --validate 
 # CHECKPOINT_FILE=work_dirs/citypersons_free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_lw04_2/latest.pth
 # CUDA_VISIBLE_DEVICES=5 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out result/citypersons_free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_lw04_2_epoch30.pkl --eval ${EVAL_METRICS}
+
+GPU_NUM=1
+CONFIG_FILE=configs/citypersons/free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_lw04.py
+CUDA_VISIBLE_DEVICES=0 tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 7884 --validate 
+CHECKPOINT_FILE=work_dirs/citypersons_free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_lw04/latest.pth
+CUDA_VISIBLE_DEVICES=0 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --out result/citypersons_free_anchor_retinanet_r50_fpn_1x_bi_niou04_notarget_smallbi04_lw04_epoch19.pkl --eval ${EVAL_METRICS}
