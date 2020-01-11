@@ -61,8 +61,14 @@ python tools/train_citypersons.py
 
 ```
 
+## CityPersons Evaluation
+
+```bash
+cd eval
+python eval_demo.py
+
+# 针对不同结果需要修改results指向的路径
+```
 ## License
 
 项目协议[Apache 2.0 license](LICENSE).
-
-
